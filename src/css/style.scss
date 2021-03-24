@@ -57,17 +57,23 @@ body {
 
 section:not(:first-of-type) {
   margin: 0 80px 40px 120px;
+  @include media-query($mq-medium) { 
+    margin: 20px 10px 40px 10px;
+  }
 }
 
 section:first-of-type {
-  margin: 0 80px 40px 80px;
+  margin: 20px 80px 40px 80px;
+  @include media-query($mq-medium) { 
+    margin: 40px 10px 40px 10px;
+  }
 }
 
 //each of the sections i.e. about, projects, skills etc. (displayed as flex)
 section {
   z-index: 2;
   display: flex;
-  height: 95vh;
+  height: 50vh;
   justify-content: space-evenly;
   align-items: center;
 
@@ -88,7 +94,11 @@ section {
 
   @include media-query($mq-large) {
     margin: 0 20px 10px 20px;
-    height: 50vh;
+  }
+
+  @include media-query($mq-medium) {
+    flex-direction: column;
+    height: inherit;
   }
 }
 
@@ -98,6 +108,11 @@ section {
   height: 120px;
   justify-content: space-between;
   align-items: center;
+
+  @include media-query($mq-medium) {
+    justify-content: center;
+    margin-bottom: 20px;
+  }
 
   h1 {
     font-size: 48px;
@@ -109,8 +124,16 @@ section {
   }
 }
 
+.intro-image, .about-image, .skills-image, .projects-image {
+  text-align: center;
+}
+
 section.about {
   flex-direction: row-reverse;
+
+  @include media-query($mq-medium) {
+    flex-direction: column;
+  }
 }
 
 .about-text {
@@ -120,10 +143,18 @@ section.about {
     margin-bottom: 8px;
     color: $soft;
   }
+  @include media-query($mq-medium) {
+    text-align: center;
+  }
 }
 
 section.projects {
   flex-direction: row-reverse;
+
+  @include media-query($mq-medium) {
+    flex-direction: column;
+  }
+
 }
 
 .skills-list {
@@ -132,11 +163,22 @@ section.projects {
     font-size: 24px;
     margin-bottom: 8px;
     color: $soft;
+    @include media-query($mq-medium) {
+      padding-left: 10px;
+    }
   }
   ul {
     li {
-      text-indent: 8px;
+      @include media-query($mq-medium) {
+        display: inline-block;
+        padding-left: 10px;
+      }
     }
+  }
+
+  @include media-query($mq-medium) {
+    padding-left: 20px;
+    text-align: center;
   }
 }
 
@@ -144,6 +186,12 @@ section.projects {
   display: flex;
   justify-content: space-evenly;
   height: 100px;
+
+  @include media-query($mq-medium) {
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 30px;
+  }
 }
 
 .projects-list {
@@ -173,6 +221,10 @@ section.projects {
     display: inline-block;
     padding-left: 12px;
   }
+
+  @include media-query($mq-medium) {
+    text-align: center;
+  }
 }
 
 .social {
@@ -181,6 +233,10 @@ section.projects {
     align-items: center;
     justify-content: space-between;
     width: 200px;
+  }
+
+  @include media-query($mq-medium) {
+    margin-bottom: 20px;
   }
 }
 

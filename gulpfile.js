@@ -43,12 +43,12 @@ gulp.task("html", function() {
 });
 
 //Takes fonts from src folder and pipes to dist folder
-gulp.task("fonts", function() {
+gulp.task("fonts", async function() {
   return gulp.src("src/fonts/*").pipe(gulp.dest("dist/fonts"));
 });
 
 //Minifies images and pipes them to dist folder
-gulp.task("images", function() {
+gulp.task("images", async function() {
   return gulp
     .src("src/images/*")
     .pipe(imagemin())
@@ -56,7 +56,7 @@ gulp.task("images", function() {
 });
 
 //Watchs for all tasks, and updates in the browser
-gulp.task("watch", function() {
+gulp.task("watch", async function() {
   browserSync.init({
     server: {
       baseDir: "dist"
@@ -70,10 +70,6 @@ gulp.task("watch", function() {
   gulp.watch("src/fonts/*", gulp.series("fonts"));
   gulp.watch("src/images/*", gulp.series("images"));
   gulp.watch("src/js/*.js", gulp.series("scripts"));
-});
-
-gulp.task("deploy", function() {
-  ghpages.publish("dist");
 });
 
 //Default task called by running 'gulp' in command line - runs all tasks and watches for them
